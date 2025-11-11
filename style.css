@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: url("875b87ce-62fb-493d-8d60-fe32965250dc.png") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-position 0.2s ease-out;
+}
+
+/* Subtle dark overlay for readability */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+  z-index: 0;
+}
+
+/* Floating main box */
+.container {
+  text-align: center;
+  z-index: 1;
+  background: rgba(0, 0, 30, 0.6);
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  border-radius: 25px;
+  padding: 40px;
+  width: 400px;
+  box-shadow: 0 0 40px #8a2be2, 0 0 80px #00ffff;
+  animation: floatBox 6s ease-in-out infinite;
+}
+
+@keyframes floatBox {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+h1 {
+  font-size: 2rem;
+  text-shadow: 0 0 20px #00ffff;
+  margin-bottom: 25px;
+}
+
+/* Neon green dropdown */
+select {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: black;
+  color: #39ff14;
+  font-weight: bold;
+  box-shadow: 0 0 15px #00ff88;
+  transition: all 0.3s ease;
+}
+
+select:hover {
+  box-shadow: 0 0 25px #00ff88;
+}
+
+/* Quote Box */
+.quote-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #fff;
+  box-shadow: inset 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+/* Buttons */
+button {
+  background: #00c6ff;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px #00ffff;
+}
+
+button:hover {
+  background: #0072ff;
+  box-shadow: 0 0 25px #ff00ff;
+}
+
+/* Animated Info Box */
+.info-box {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 0, 150, 0.2);
+  border: 2px solid rgba(255, 0, 255, 0.6);
+  border-radius: 15px;
+  padding: 15px 25px;
+  width: 250px;
+  box-shadow: 0 0 30px #ff00ff;
+  animation: glowRotate 8s infinite ease-in-out;
+  z-index: 5;
+}
+
+@keyframes glowRotate {
+  0% { transform: rotate(0deg) scale(1); box-shadow: 0 0 30px #ff00ff; }
+  25% { transform: rotate(2deg) scale(1.05); box-shadow: 0 0 50px #00ffff; }
+  50% { transform: rotate(-2deg) scale(1.1); box-shadow: 0 0 40px #ff00ff; }
+  75% { transform: rotate(3deg) scale(1.05); box-shadow: 0 0 50px #00ffff; }
+  100% { transform: rotate(0deg) scale(1); box-shadow: 0 0 30px #ff00ff; }
+}
+
+.info-box p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+}

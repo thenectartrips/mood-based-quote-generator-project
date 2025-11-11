@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mood-Based Quote Generator</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="assets/quote.ico" />
+</head>
+
+<body>
+  <div class="info-box">
+    <p><strong>Submitted By:</strong> Piyush Mani Tripathi</p>
+    <p><strong>Submitted To:</strong> Pankaj Bhidoni Sir</p>
+    <p><strong>SAP ID:</strong> 590021763</p>
+    <p><strong>Batch:</strong> 9</p>
+  </div>
+
+  <div class="container">
+    <h1>Mood-Based Quote Generator</h1>
+    <select id="moodSelect">
+      <option value="">Select a Mood</option>
+      <option value="happy">Happy</option>
+      <option value="sad">Sad</option>
+      <option value="angry">Angry</option>
+      <option value="irritated">Irritated</option>
+      <option value="fear">Fear</option>
+      <option value="peace">Peace</option>
+      <option value="motivated">Motivated</option>
+    </select>
+    <div id="quoteDisplay" class="quote-box">Your quote will appear here...</div>
+
+    <div class="buttons">
+      <button id="newQuote">✨ New Quote</button>
+      <button id="clearQuote">🧹 Clear</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
