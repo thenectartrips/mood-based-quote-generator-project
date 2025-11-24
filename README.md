@@ -2,13 +2,13 @@
 
 A simple C program that displays random quotes based on the mood selected by the user.
 
-
+---
 
 ## 🚀 **Aim**
 
 The aim of this project is to help users receive a quote that matches their current emotional state, making the experience meaningful, uplifting, and personalized.
 
-
+---
 
 ## 🛠️ **Concepts & Data Types Used**
 
@@ -22,7 +22,7 @@ This project includes:
 - `rand()` + `srand(time(NULL))` → random quote selection  
 - Control structures → `switch`, `while`, `do-while`
 
-
+---
 
 ## 📁 **File Structure**
 
@@ -38,7 +38,6 @@ Mood-Based-Quote-Generator
 ├── peace.txt
 └── motivated.txt
 
-
 ---
 
 ## 🔮 **Future Scope**
@@ -49,7 +48,8 @@ Mood-Based-Quote-Generator
 - Add user personalization like favorites/history
 - Share quote feature (WhatsApp, Instagram)
 - Add AI mood detection for automatic quote selection
-  
+
+---
 
 ## 💬 **Suggestions / Collaboration**
 
@@ -58,12 +58,17 @@ Open for improvements and ideas.
 📎 **LinkedIn:**  
 👉 https://www.linkedin.com/in/piyush-mani-tripathi-308929283/
 
+---
 
 ## 👤 **Created By**
 
-**Piyush Mani Tripathi**
+**Piyush Mani Tripathi**  
+SAP ID: **590021763**  
+Batch: **9**
 
+---
 
 ⭐ If you like this project, give it a **Star**!
+
 
 
