@@ -63,8 +63,6 @@ Open for improvements and ideas.
 ## 👤 **Created By**
 
 **Piyush Mani Tripathi**  
-SAP ID: **590021763**  
-Batch: **9**
 
 ---
 
