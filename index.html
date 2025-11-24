@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Based Quote Generator</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background: #020204;
+            color: #fff;
+            text-align: center;
+            padding-top: 60px;
+            overflow-x: hidden;
+        }
+
+        /* NEON BUTTONS */
+        button {
+            margin: 10px;
+            padding: 12px 25px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: none;
+            background: #111;
+            color: white;
+            transition: .3s;
+            box-shadow: 0 0 10px #00f2ff, inset 0 0 20px #00f2ff;
+        }
+
+        button:hover {
+            background: #00f2ff;
+            color: black;
+            transform: scale(1.1);
+            box-shadow: 0 0 25px #00f2ff, inset 0 0 30px #00f2ff;
+        }
+
+        /* QUOTE BOX + GLOW FRAME */
+        #quoteBox {
+            font-size: 28px;
+            margin-top: 40px;
+            opacity: 0;
+            color: #00ffc8;
+            padding: 20px;
+            border: 3px solid #00ffc8;
+            border-radius: 15px;
+            text-shadow: 0 0 15px #00ffc8, 0 0 30px #00ffc8;
+            box-shadow: 0 0 20px #00ffc8;
+            transition: opacity .9s ease-in-out;
+            position: relative;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Animated neon pulse border */
+        #quoteBox::before {
+            content: "";
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            width: calc(100% + 12px);
+            height: calc(100% + 12px);
+            border-radius: 15px;
+            border: 3px solid #00ffc8;
+            opacity: 0.7;
+            animation: pulseGlow 3s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 10px #00ffc8, inset 0 0 15px #00ffc8;
+            }
+
+            50% {
+                box-shadow: 0 0 35px #00ffc8, inset 0 0 45px #00ffc8;
+            }
+
+            100% {
+                box-shadow: 0 0 10px #00ffc8, inset 0 0 15px #00ffc8;
+            }
+        }
+
+        /* SUBMISSION INFO */
+        #submittedInfo {
+            position: fixed;
+            top: 10px;
+            left: 15px;
+            font-size: 16px;
+            text-align: left;
+            color: #0afff2;
+            text-shadow: 0 0 10px cyan;
+            width: 300px;
+            line-height: 1.4;
+            border-left: 4px solid #00ffc8;
+            padding-left: 10px;
+        }
+
+        /* Cyber scanning line */
+        .glow-line {
+            width: 120%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffc8, transparent);
+            position: absolute;
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            0% {
+                top: 0;
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+
+        hr {
+            width: 60%;
+            border: 1px solid #3a3a3a;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="glow-line"></div>
+
+    <!-- Submission Info -->
+    <div id="submittedInfo">
+        <b>Submitted By:</b> Piyush Mani Tripathi <br>
+        <b>SAP ID:</b> 590021763 <br>
+        <b>Batch:</b> 9 <br>
+        <b>Submitted To:</b> Pankaj Bhidoni Sir
+    </div>
+
+    <h1 style="text-shadow:0 0 20px cyan; font-size:40px;">Mood Based Quote Generator</h1>
+    <p>Select your mood:</p>
+
+    <!-- Mood Buttons -->
+    <button onclick="loadQuotes('happy')">😊 Happy</button>
+    <button onclick="loadQuotes('sad')">😢 Sad</button>
+    <button onclick="loadQuotes('motivated')">💪 Motivated</button>
+    <button onclick="loadQuotes('angry')">😡 Angry</button>
+    <button onclick="loadQuotes('fear')">😱 Fear</button>
+    <button onclick="loadQuotes('peace')">🕊 Peace</button>
+    <button onclick="loadQuotes('irritated')">😤 Irritated</button>
+
+    <hr>
+
+    <!-- Quote -->
+    <div id="quoteBox"></div>
+
+    <!-- AUDIO FILES -->
+    <audio id="happy" src="sounds/happy.mp3"></audio>
+    <audio id="sad" src="sounds/sad.mp3"></audio>
+    <audio id="motivated" src="sounds/motivated.mp3"></audio>
+    <audio id="angry" src="sounds/angry.mp3"></audio>
+    <audio id="fear" src="sounds/fear.mp3"></audio>
+    <audio id="peace" src="sounds/peace.mp3"></audio>
+    <audio id="irritated" src="sounds/irritated.mp3"></audio>
+
+    <script>
+        function playSound(mood) {
+            const audioEl = document.getElementById(mood);
+            audioEl.currentTime = 0;
+            audioEl.play();
+        }
+
+        function loadQuotes(mood) {
+            playSound(mood);
+
+            fetch(`quotes/${mood}.txt`)
+                .then(response => response.text())
+                .then(data => {
+                    const quotes = data.split("\n").filter(q => q.trim() !== "");
+                    const random = Math.floor(Math.random() * quotes.length);
+                    let box = document.getElementById("quoteBox");
+
+                    box.style.opacity = 0;
+
+                    setTimeout(() => {
+                        box.innerHTML = quotes[random];
+                        box.style.opacity = 1;
+                    }, 400);
+                })
+                .catch(() => {
+                    document.getElementById("quoteBox").innerHTML = "⚠ Could not load quotes!";
+                });
+        }
+    </script>
+
+</body>
+
+</html>
